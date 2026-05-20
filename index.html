@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arogs — Rise With IMPACT | Great Ife Students' Union</title>
+  <meta name="description" content="Join the movement. Rise With IMPACT. Arogs for President, Great Ife Students' Union, OAU." />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #8B6914;
+      --deep: #0a0a0a;
+      --dark: #111111;
+      --mid: #1a1a1a;
+      --surface: #222222;
+      --text: #f0ece0;
+      --text-muted: #9a9080;
+      --green: #2a5c3f;
+      --green-bright: #3d8a5e;
+      --white: #faf8f2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── MODAL OVERLAY ── */
+    #modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    #modal-overlay.hidden { display: none; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-box {
+      background: var(--dark);
+      border: 1px solid var(--gold-dark);
+      border-radius: 4px;
+      padding: 48px 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: slideUp 0.5s ease 0.2s both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .modal-emblem {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .modal-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .modal-question span { color: var(--gold); font-style: italic; }
+
+    .modal-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .modal-form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+
+    .modal-form input {
+      background: var(--mid);
+      border: 1px solid #333;
+      border-radius: 3px;
+      padding: 14px 18px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .modal-form input:focus { border-color: var(--gold); }
+    .modal-form input::placeholder { color: #555; }
+
+    .modal-buttons { display: flex; gap: 12px; }
+
+    .btn-yes, .btn-no {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-yes {
+      background: var(--gold);
+      color: var(--deep);
+    }
+    .btn-yes:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-no {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid #333;
+    }
+    .btn-no:hover { border-color: #555; color: var(--text); }
+
+    #modal-feedback {
+      font-size: 13px;
+      color: var(--gold);
+      min-height: 20px;
+      margin-top: 8px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: var(--gold);
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(42,92,63,0.15) 0%, transparent 60%);
+    }
+
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 64px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 8vw, 110px);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .hero-name .highlight {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-slogan {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2vw, 24px);
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .hero-slogan strong { color: var(--gold); font-style: normal; font-weight: 700; }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--deep);
+      padding: 16px 36px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+
+    .btn-outline {
+      border: 1px solid var(--gold-dark);
+      color: var(--gold);
+      padding: 16px 36px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-emblem {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(201,168,76,0.1); }
+      50% { box-shadow: 0 0 80px rgba(201,168,76,0.25); }
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px dashed rgba(201,168,76,0.15);
+      animation: spin 30s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .emblem-inner {
+      text-align: center;
+    }
+
+    .emblem-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .emblem-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .emblem-oau {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: var(--gold-dark);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ── IMPACT NUMBERS ── */
+    #impact {
+      background: var(--mid);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 64px 48px;
+    }
+
+    .impact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .impact-item {
+      text-align: center;
+      padding: 32px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .impact-item:last-child { border-right: none; }
+
+    .impact-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .impact-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 48px; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    .about-callout {
+      background: var(--mid);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      margin-top: 32px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .about-callout p {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--text) !important;
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .about-values { display: flex; flex-direction: column; gap: 20px; }
+
+    .value-card {
+      background: var(--mid);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .value-card:hover { border-color: rgba(201,168,76,0.3); transform: translateX(4px); }
+
+    .value-icon {
+      font-size: 28px;
+      min-width: 44px;
+      height: 44px;
+      background: rgba(201,168,76,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .value-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .value-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── TRACK RECORD ── */
+    #track { background: var(--mid); }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 0;
+    }
+
+    .track-card {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .track-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+
+    .track-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .track-card:hover::after { opacity: 1; }
+
+    .track-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .track-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .track-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .track-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-top: 16px;
+    }
+
+    /* ── VISION ── */
+    #vision {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #vision::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .vision-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .pillar {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pillar:last-child { border-bottom: none; }
+
+    .pillar-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: rgba(201,168,76,0.15);
+      line-height: 1;
+      margin-bottom: -8px;
+    }
+
+    .pillar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .pillar-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+    .vision-quote {
+      background: var(--mid);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 48px 40px;
+      text-align: center;
+      position: sticky;
+      top: 100px;
+    }
+
+    .vision-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .vision-quote cite {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* ── MANIFESTO ── */
+    #manifesto { background: var(--mid); }
+
+    .manifesto-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .manifesto-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .manifesto-sidebar .big-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      line-height: 0.85;
+      color: rgba(201,168,76,0.08);
+      letter-spacing: -2px;
+    }
+
+    .manifesto-points { display: flex; flex-direction: column; gap: 0; }
+
+    .manifesto-point {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .manifesto-point:first-child { padding-top: 0; }
+
+    .mp-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      padding-top: 2px;
+    }
+
+    .mp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .mp-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+    /* ── SUPPORTER WALL ── */
+    #supporters { padding-bottom: 60px; }
+
+    .supporter-count {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .supporter-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 48px; }
+
+    .supporter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .supporter-tags::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, var(--deep));
+    }
+
+    .stag {
+      background: var(--mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 48px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.8; max-width: 300px; }
+
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p { font-size: 12px; color: var(--text-muted); }
+
+    /* ── NOTIFICATION TOAST ── */
+    #notif-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--mid);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 4px;
+      padding: 16px 20px;
+      max-width: 320px;
+      z-index: 9000;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.4s ease;
+      font-size: 14px;
+    }
+
+    #notif-toast.show { transform: translateY(0); opacity: 1; }
+
+    #notif-toast .toast-title {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-content { padding: 120px 28px 60px; }
+      nav { padding: 20px 28px; }
+      .nav-links { display: none; }
+      #about .about-grid,
+      .vision-cols,
+      .manifesto-content,
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .track-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 70px 28px; }
+      .modal-box { padding: 36px 24px; }
+      .modal-question { font-size: 22px; }
+      .footer-inner { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── MODAL ── -->
+  <div id="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-emblem">GREAT IFE STUDENTS' UNION · OAU</div>
+      <h2 class="modal-question">Are you ready to <span>Rise With IMPACT?</span></h2>
+      <p class="modal-sub">Join the movement. Leave your details and be part of something greater than yourself.</p>
+      <div class="modal-form">
+        <input type="email" id="modal-email" placeholder="Your email address" autocomplete="email" />
+        <input type="tel" id="modal-phone" placeholder="Your phone number" autocomplete="tel" />
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-yes" onclick="handleModalYes()">YES, I'M READY</button>
+        <button class="btn-no" onclick="handleModalNo()">NOT YET</button>
+      </div>
+      <p id="modal-feedback"></p>
+    </div>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">AROGS</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#track">Track Record</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#supporters">Movement</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Great Ife Students' Union · OAU</div>
+      <h1 class="hero-name">
+        RISE<br>
+        <span class="highlight">WITH</span>
+        IMPACT
+      </h1>
+      <p class="hero-slogan">
+        A movement for every student.<br>
+        <strong>Arogs</strong> — The candidate who delivers.
+      </p>
+      <div class="hero-cta">
+        <a href="#track" class="btn-primary">See Track Record</a>
+        <a href="#vision" class="btn-outline">The Vision</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-emblem">
+        <div class="emblem-inner">
+          <div class="emblem-title">AROGS</div>
+          <div class="emblem-sub">Rise With Impact</div>
+          <div class="emblem-oau">Obafemi Awolowo University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── IMPACT NUMBERS ── -->
+  <div id="impact">
+    <div class="impact-grid">
+      <div class="impact-item">
+        <span class="impact-number" data-target="3">0</span>
+        <div class="impact-label">Years of Student Leadership</div>
+      </div>
+      <div class="impact-item">
+        <span class="impact-number" data-target="12">0</span>
+        <div class="impact-label">Initiatives Executed</div>
+      </div>
+      <div class="impact-item">
+        <span class="impact-number" data-target="5000">0</span>
+        <div class="impact-label">Students Directly Impacted</div>
+      </div>
+      <div class="impact-item">
+        <span class="impact-number" data-target="8">0</span>
+        <div class="impact-label">Committees Led</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <div class="section-tag">Who Is Arogs</div>
+          <h2 class="section-title">A Leader Born From <em>This Soil</em></h2>
+          <p>Arogs is not a stranger to the corridors of student governance at OAU. From the faculty level to the broadest cross-faculty platforms, this is a candidate who has <strong>shown up, delivered, and earned every endorsement through action</strong>, not words.</p>
+          <p>A product of Obafemi Awolowo University's finest academic tradition, Arogs combines intellectual rigour with grassroots empathy — understanding that the student body is not a monolith but a rich, diverse community deserving <strong>leadership that sees every voice</strong>.</p>
+          <p>The slogan <em>Rise With IMPACT</em> is not just a campaign phrase — it is a philosophy. IMPACT means: <strong>Integrity, Movement, Presence, Action, Community, Transformation</strong>.</p>
+          <div class="about-callout">
+            <p>"Every student at Great Ife deserves a union that works as hard as they do."</p>
+          </div>
+        </div>
+        <div class="about-values">
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <div>
+              <div class="value-title">Integrity First</div>
+              <div class="value-desc">A record of transparent decision-making across every position held. No empty promises — only commitments backed by capacity and resources.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <div>
+              <div class="value-title">Action-Oriented</div>
+              <div class="value-desc">Every initiative proposed has been thought through from start to execution. Leadership is measured by what gets done, not what gets said.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <div>
+              <div class="value-title">Community Rooted</div>
+              <div class="value-desc">Deep relationships with student communities across all faculties, hostels, and associations — built over years, not weeks before an election.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <div>
+              <div class="value-title">Transformative Vision</div>
+              <div class="value-desc">A forward-looking agenda that addresses welfare, academics, infrastructure, and student dignity — with clear timelines and accountability mechanisms.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRACK RECORD ── -->
+  <section id="track">
+    <div class="section-inner">
+      <div class="section-tag reveal">Proven Results</div>
+      <h2 class="section-title reveal">The <em>Track Record</em> Speaks</h2>
+      <p class="section-desc reveal">Leadership is not a campaign — it's a history. Here is what has already been accomplished.</p>
+
+      <div class="track-grid">
+        <div class="track-card reveal">
+          <div class="track-year">2022 — FACULTY LEVEL</div>
+          <div class="track-title">Students' Welfare Desk Reform</div>
+          <div class="track-desc">Led a comprehensive overhaul of the faculty welfare desk, reducing complaint resolution time from 3 weeks to 5 days and creating a transparent log system for student issues.</div>
+          <span class="track-badge">Welfare</span>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-year">2022 — ACADEMICS</div>
+          <div class="track-title">Exam Timetable Crisis Resolution</div>
+          <div class="track-desc">Brokered a landmark negotiation between students and the faculty registrar after a clash between three finals papers — resulting in an emergency rescheduling that protected over 400 students.</div>
+          <span class="track-badge">Advocacy</span>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-year">2023 — COMMUNITY</div>
+          <div class="track-title">The IFE CONNECT Initiative</div>
+          <div class="track-desc">Designed and launched a cross-faculty networking platform that connected final-year students with alumni mentors — 600+ students matched in first semester alone.</div>
+          <span class="track-badge">Innovation</span>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-year">2023 — INFRASTRUCTURE</div>
+          <div class="track-title">Hostel Lighting & Safety Drive</div>
+          <div class="track-desc">Coordinated a multi-stakeholder campaign for hostel security improvements. Resulted in the installation of functional lighting across 4 hostel blocks and new emergency contacts protocol.</div>
+          <span class="track-badge">Infrastructure</span>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-year">2024 — LEADERSHIP</div>
+          <div class="track-title">Director of Socials — NAPS OAU</div>
+          <div class="track-desc">Oversaw the most attended departmental dinner in 5 years, raising ₦1.2M in sponsorships and delivering a 3-day student experience with zero budget overrun.</div>
+          <span class="track-badge">Finance & Events</span>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-year">2024 — ACADEMICS</div>
+          <div class="track-title">Study Aid & Resource Hub</div>
+          <div class="track-desc">Established a digital resource sharing network across WhatsApp and Google Drive — now serving 800+ active students with past questions, summaries, and recorded lectures.</div>
+          <span class="track-badge">Academics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISION ── -->
+  <section id="vision">
+    <div class="section-inner">
+      <div class="vision-cols reveal">
+        <div>
+          <div class="section-tag">Looking Forward</div>
+          <h2 class="section-title">The <em>IMPACT</em> Agenda</h2>
+          <p class="section-desc">Six pillars. One mission. A union that works for every single student at Great Ife.</p>
+
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <div class="pillar-title">Welfare & Mental Health</div>
+            <p class="pillar-text">Establish a dedicated Student Wellness Centre, expand free counselling sessions, and create an emergency hardship fund for students in acute need.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <div class="pillar-title">Academic Excellence</div>
+            <p class="pillar-text">Lobby for a student-accessible grading transparency portal, structured departmental tutorials, and a formal student-faculty dialogue calendar every semester.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <div class="pillar-title">Infrastructure & Safety</div>
+            <p class="pillar-text">Advocate for rehabilitated study spaces, functional hostel facilities, and a university-wide emergency response protocol co-managed by the union.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">04</div>
+            <div class="pillar-title">Enterprise & Opportunity</div>
+            <p class="pillar-text">Launch the IMPACT Internship Board — a partnership with alumni and corporate entities to create paid internship pipelines for Great Ife students.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">05</div>
+            <div class="pillar-title">Inclusion & Representation</div>
+            <p class="pillar-text">Ensure every faculty, minority group, and special-needs student has a direct channel into union decision-making — no voice left behind.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">06</div>
+            <div class="pillar-title">Transparency & Accountability</div>
+            <p class="pillar-text">Publish monthly union activity reports, open the budget to student review, and hold quarterly town halls — leadership that has nothing to hide.</p>
+          </div>
+        </div>
+
+        <div class="vision-quote">
+          <blockquote>"The best student union is one you don't have to beg for help — it finds you first."</blockquote>
+          <cite>— Arogs · Rise With IMPACT</cite>
+
+          <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px;">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 3px; color: var(--gold); margin-bottom: 20px;">THE IMPACT ACRONYM</div>
+            <div style="text-align: left; display: flex; flex-direction: column; gap: 12px;">
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">I</span><span style="font-size: 14px; color: var(--text-muted);">Integrity in every decision</span></div>
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">M</span><span style="font-size: 14px; color: var(--text-muted);">Movement that includes everyone</span></div>
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">P</span><span style="font-size: 14px; color: var(--text-muted);">Presence when students need it most</span></div>
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">A</span><span style="font-size: 14px; color: var(--text-muted);">Action over empty promises</span></div>
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">C</span><span style="font-size: 14px; color: var(--text-muted);">Community as the foundation</span></div>
+              <div><span style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 18px; margin-right: 12px;">T</span><span style="font-size: 14px; color: var(--text-muted);">Transformation that outlasts any term</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MANIFESTO ── -->
+  <section id="manifesto">
+    <div class="section-inner">
+      <div class="manifesto-content reveal">
+        <div class="manifesto-sidebar">
+          <div class="section-tag">Commitments</div>
+          <h2 class="section-title">The <em>Manifesto</em></h2>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">Not promises — pledges backed by a track record that makes them believable.</p>
+          <div class="big-text" style="margin-top: 40px;">MAN<br>IFES<br>TO</div>
+        </div>
+        <div class="manifesto-points">
+          <div class="manifesto-point">
+            <div class="mp-num">01</div>
+            <div>
+              <div class="mp-title">₦500K Emergency Student Fund</div>
+              <p class="mp-text">Establish a ring-fenced emergency welfare fund accessible to students in documented financial or medical crisis, disbursable within 48 hours of application.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">02</div>
+            <div>
+              <div class="mp-title">Dedicated Careers & Internship Office</div>
+              <p class="mp-text">A physical and digital IMPACT Career Hub — staffed, resourced, and actively connecting students to post-university opportunities every single semester.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">03</div>
+            <div>
+              <div class="mp-title">Open Budget Policy</div>
+              <p class="mp-text">All union financial allocations published monthly. Every naira accounted for. Students can submit queries and receive documented responses within 7 days.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">04</div>
+            <div>
+              <div class="mp-title">A Town Hall Every Semester</div>
+              <p class="mp-text">Compulsory open town halls — not optional — where the union leadership faces unfiltered student questions and responds with concrete action plans.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">05</div>
+            <div>
+              <div class="mp-title">Mental Health Integration</div>
+              <p class="mp-text">Partner with the university health centre to embed mental health services into student life — with reduced stigma campaigns and structured peer support training.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">06</div>
+            <div>
+              <div class="mp-title">Faculty Rep Empowerment Programme</div>
+              <p class="mp-text">Invest in training and resourcing faculty representatives so they can actually deliver for their constituents — not just attend meetings.</p>
+            </div>
+          </div>
+          <div class="manifesto-point">
+            <div class="mp-num">07</div>
+            <div>
+              <div class="mp-title">IMPACT Digital Platform</div>
+              <p class="mp-text">A unified student portal for union services, petition submission, event registration, and feedback — so you never have to physically chase down a union official to be heard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUPPORTERS ── -->
+  <section id="supporters">
+    <div class="section-inner">
+      <div class="section-tag reveal">The Movement</div>
+      <div class="supporter-count reveal" id="supporter-count">0</div>
+      <div class="supporter-sub reveal">Students have joined the IMPACT movement</div>
+
+      <div class="supporter-tags" id="supporter-tags">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">AROGS</div>
+        <p>Rise With IMPACT — a movement for students, by a student who has proven he can deliver. Great Ife Students' Union, Obafemi Awolowo University.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About Arogs</a></li>
+          <li><a href="#track">Track Record</a></li>
+          <li><a href="#vision">Vision & Agenda</a></li>
+          <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#supporters">The Movement</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">WhatsApp Community</a></li>
+          <li><a href="#">Email Campaign</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Arogs Campaign · Great Ife Students' Union · Obafemi Awolowo University</p>
+      <p style="color: var(--gold); font-family: 'Bebas Neue'; letter-spacing: 3px; font-size: 14px;">RISE WITH IMPACT</p>
+    </div>
+  </footer>
+
+  <!-- ── TOAST ── -->
+  <div id="notif-toast">
+    <div class="toast-title">🔔 IMPACT MOVEMENT</div>
+    <div id="toast-msg"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
