@@ -55,7 +55,7 @@ body{background:var(--off);color:var(--ink);font-family:'DM Sans',sans-serif;ove
 .m-yes{flex:1;padding:16px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--ink);color:#fff;transition:all .22s}
 .m-yes:hover{background:var(--gold)}
 .m-no{flex:1;padding:16px;border:1px solid var(--border-2);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;background:transparent;color:var(--muted);transition:all .2s}
-.m-no:hover{color:var(--ink);border-color:var(--ink)}
+.m-no:hover{color:var(--white);border-color:var(--white)}
 #m-fb{font-size:12px;font-family:'DM Mono',monospace;letter-spacing:1px;color:var(--gold-lo);min-height:18px;margin-top:12px}
 
 /* ════ NAV ════ */
@@ -353,10 +353,11 @@ footer{background:var(--ink);padding:80px 48px 44px}
 
 <!-- ══════ MODAL ══════ -->
 <div id="modal">
-  <div class="m-box">
+  <div class="m-box" style="background-color: #0A0A0A;">
+    <img src="logo.png" width="70%">
     <div class="m-label">Great Ife Students' Union · OAU</div>
-    <h2 class="m-q">Rise With<br><em>IMPACT</em></h2>
-    <p class="m-sub">Join the movement shaping the future of Great Ife. Leave your details and be part of history.</p>
+    <h2 class="m-q" style="color: #EDEBE6;">Rise With<br><em>IMPACT</em></h2>
+    <p class="m-sub">Join the movement shaping the future of Great Ife. Join the IMPACT Agenda and be part a of history.</p>
     <div class="m-form">
       <input type="email" id="m-email" placeholder="Your email address" autocomplete="email"/>
       <input type="tel" id="m-phone" placeholder="Your phone number" autocomplete="tel"/>
@@ -381,7 +382,7 @@ footer{background:var(--ink);padding:80px 48px 44px}
 
 <!-- ══════ NAV ══════ -->
 <nav id="nav">
-  <a href="#" class="n-logo"><span class="n-pip"></span>Arogs</a>
+  <a href="#" class="n-logo"><span class="n-pip"></span><!--<img src="logo.png" width="30%">-->Arogs</a>
   <ul class="n-links">
     <li><a href="#about">About</a></li>
     <li><a href="#track">Track Record</a></li>
@@ -434,18 +435,18 @@ footer{background:var(--ink);padding:80px 48px 44px}
         <ellipse cx="100" cy="90" rx="52" ry="52" fill="#D4A017" opacity=".15"/>
         <ellipse cx="100" cy="90" rx="36" ry="36" fill="#D4A017" opacity=".12"/>
         <path d="M30 280 C30 200 170 200 170 280" fill="#D4A017" opacity=".08"/>
-        <text x="100" y="200" text-anchor="middle" font-family="Anton,sans-serif" font-size="11" fill="#888" letter-spacing="3">ADD PHOTO HERE</text>
+        <text x="100" y="200" text-anchor="middle" font-family="Anton,sans-serif" font-size="11" fill="#888" letter-spacing="3"><img src="image0 (5).jpeg" width="80%" style="filter: brightness(55%)";></text>
       </svg>
     </div>
     <div class="h-photo-label">
       <div class="hl-tag">The Candidate</div>
       <div class="hl-name">AROGS</div>
-      <div class="hl-role">Running for GISU President · OAU</div>
+      <div class="hl-role">Ready To Rise With IMPACT · Great Ife</div>
     </div>
     <div class="h-badge">
       <div class="h-badge-inner">
-        <div class="hb-top">GISU</div>
-        <div class="hb-main">2025</div>
+        <div class="hb-top">Great Ife SU</div>
+        <div class="hb-main">2026</div>
         <div class="hb-top">OAU · IFE</div>
       </div>
     </div>
@@ -462,13 +463,13 @@ footer{background:var(--ink);padding:80px 48px 44px}
 <div class="ticker">
   <div class="ticker-inner">
     <span class="ticker-item">#RiseWithIMPACT <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">AROGS FOR GISU <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">THE IMPACT AGENDA <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">GREAT IFE STUDENTS' UNION <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">#RiseWithIMPACT <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">OAU · ILE-IFE <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">A LEADER WITH A RECORD <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">#RiseWithIMPACT <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">AROGS FOR GISU <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">THE IMPACT AGENDA <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">GREAT IFE STUDENTS' UNION <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">#RiseWithIMPACT <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">OAU · ILE-IFE <span class="ticker-sep">✦</span></span>
@@ -513,7 +514,7 @@ footer{background:var(--ink);padding:80px 48px 44px}
 <div id="stats">
   <div class="st-grid">
     <div class="st-item">
-      <span class="st-num" data-t="3">0</span><span class="st-sup">+</span>
+      <span class="st-num" data-t="6">0</span><span class="st-sup">+</span>
       <span class="st-label">Years of Leadership</span>
       <div class="st-bar"><div class="st-fill" data-w="60"></div></div>
     </div>
@@ -567,7 +568,7 @@ footer{background:var(--ink);padding:80px 48px 44px}
   <div class="disc-inner">
     <div class="disc-head rev">
       <div class="disc-title">DISCOVER<br><em>THE</em><br>VISION</div>
-      <p class="disc-sub">Six pillars. One mission. A union built to work for every single student at Great Ife — without exception. <strong>From Moremi to Mozambique, from ETF to the Faculty of Law</strong> — no student is left behind in the IMPACT agenda.</p>
+      <p class="disc-sub">Six pillars. One mission. A union built to work for every single student at Great Ife without exception. <strong>From Moremi to Mozambique, from ETF to the Faculty of Law</strong> — no student is left behind in the IMPACT agenda.</p>
     </div>
     <!-- Stylized campus presence map -->
     <div class="disc-map rev">
@@ -600,14 +601,28 @@ footer{background:var(--ink);padding:80px 48px 44px}
   <div class="s-inner">
     <div class="rev"><div class="s-pre">Proven Results</div></div>
     <h2 class="s-title rev">THE RECORD<br><em>SPEAKS</em><br><span class="ghost">FOR ITSELF</span></h2>
-    <p class="s-body rev" style="margin-bottom:48px">Leadership is not a campaign — it's a history. Here is what has already been accomplished.</p>
+    <p class="s-body rev" style="margin-bottom:48px">Leadership is not a campaign, it's a history. Here is what has already been accomplished.</p>
     <div class="tr-grid rev">
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2022 — Faculty Level</div><div class="tc-h">Students' Welfare Desk Reform</div><div class="tc-d">Led a comprehensive overhaul reducing complaint resolution time from 3 weeks to 5 days, with a transparent log system for every student issue.</div><span class="tc-badge">Welfare</span></div>
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2022 — Academics</div><div class="tc-h">Exam Timetable Crisis Resolution</div><div class="tc-d">Brokered a landmark negotiation between students and the faculty registrar — emergency rescheduling protected over 400 students from clash conflicts.</div><span class="tc-badge">Advocacy</span></div>
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Community</div><div class="tc-h">The IFE CONNECT Initiative</div><div class="tc-d">Designed a cross-faculty networking platform connecting final-year students with alumni mentors — 600+ students matched in the first semester alone.</div><span class="tc-badge">Innovation</span></div>
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Infrastructure</div><div class="tc-h">Hostel Lighting & Safety Drive</div><div class="tc-d">Coordinated a multi-stakeholder campaign resulting in functional lighting across 4 hostel blocks and a new emergency contacts protocol campus-wide.</div><span class="tc-badge">Infrastructure</span></div>
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2024 — Leadership</div><div class="tc-h">Director of Socials — NAPS OAU</div><div class="tc-d">Oversaw the most attended departmental dinner in 5 years, raising ₦1.2M in sponsorships and delivering a 3-day experience with zero budget overrun.</div><span class="tc-badge">Finance & Events</span></div>
-      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2024 — Academics</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2021 — Founder, Union of Genius</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2021 — Convener, UOG Digital Bootcamp</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2022 — Director, NACOS Innovation Hub</div><div class="tc-h">Accessibility To Digital Skills</div><div class="tc-d">Led a comprehensive overhaul reducing complaint resolution time from 3 weeks to 5 days, with a transparent log system for every student issue.</div><span class="tc-badge">Welfare</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2022 — Asst. General Secretary, NACOS</div><div class="tc-h">Exam Timetable Crisis Resolution</div><div class="tc-d">Brokered a landmark negotiation between students and the faculty registrar — emergency rescheduling protected over 400 students from clash conflicts.</div><span class="tc-badge">Advocacy</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Secretary General, NACOS SouthWest</div><div class="tc-h">The IFE CONNECT Initiative</div><div class="tc-d">Designed a cross-faculty networking platform connecting final-year students with alumni mentors — 600+ students matched in the first semester alone.</div><span class="tc-badge">Innovation</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — PRO, Great Ife SU Security Committee</div><div class="tc-h">Hostel Lighting & Safety Drive</div><div class="tc-d">Coordinated a multi-stakeholder campaign resulting in functional lighting across 4 hostel blocks and a new emergency contacts protocol campus-wide.</div><span class="tc-badge">Infrastructure</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Planning Committee Member, OAU Who Gets To Be A Millionaire</div><div class="tc-h">Director of Socials — NAPS OAU</div><div class="tc-d">Oversaw the most attended departmental dinner in 5 years, raising ₦1.2M in sponsorships and delivering a 3-day experience with zero budget overrun.</div><span class="tc-badge">Finance & Events</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Planning Committee Member, Great Ife SU Schorlarship Scheme</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2023 — Planning Committee Member, Great Ife SU Food Slash Initiative</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2024 — Convener/Host, Innovation Festival</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2024 — Elected, Directorate of Innovation & Research, NACOS National</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2024 — PRO, Nigeria Red Cross Society Ife DIvision</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2025 — Planning Committee Member, NACOS Southwest Dinner & Awards, Lagos</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2025 — Guest of Honor, Digifest 1.0 Organized By FUNAAB</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Planning Committee Member, Cybersmart Summit, Abuja</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Planning Committee Member, Great Ife SU Food Slash & Free Food</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Chairman Planning Committee, Great Ife International Health Conference</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Chairman Planning Committee, Great Ife Distinguished Lecture & Awards</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Chairman Planning Committee, CSRC Parliamentary Summit 1.0</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
+      <div class="tc"><div class="tc-line"></div><div class="tc-yr">2026 — Panelist, Digifest 2.0 Organized By FUNAAB</div><div class="tc-h">Study Aid & Resource Hub</div><div class="tc-d">Established a digital resource sharing network — now serving 800+ active students with past questions, lecture summaries, and recorded classes.</div><span class="tc-badge">Academics</span></div>
     </div>
   </div>
 </section>
@@ -631,7 +646,7 @@ footer{background:var(--ink);padding:80px 48px 44px}
       </div>
       <div class="vis-card-wrap rev rgt">
         <div class="q-card">
-          <blockquote>"THE BEST STUDENT UNION IS ONE YOU DON'T HAVE TO BEG FOR HELP — <em>IT FINDS YOU FIRST.</em>"</blockquote>
+          <blockquote>"THE BEST FORM OF REPRESENTATION ISN'T ENTIRELY THE ONE THAT SOLVES PROBLEMS, <em>IT'S THE ONE THAT PREDICTS THEM BEFORE IT HAPPENS.</em>"</blockquote>
           <cite>— Arogs · #RiseWithIMPACT</cite>
           <div class="acro-block">
             <div class="acro-lbl">The IMPACT Acronym</div>
