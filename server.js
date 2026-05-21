@@ -7,7 +7,29 @@ const webpush = require('web-push');
 const cron = require('node-cron');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+
+// Load .env file only in local development (ignored on Render/Railway where vars are set in dashboard)
+if (process.env.NODE_ENV !== 'production') {
+  try { require('dotenv').config(); } catch(e) {}
+}
+
+// ── VALIDATE REQUIRED ENV VARS ──
+const REQUIRED_VARS = [
+  'SUPABASE_URL',
+  'SUPABASE_SERVICE_KEY',
+  'VAPID_PUBLIC_KEY',
+  'VAPID_PRIVATE_KEY',
+  'CONTACT_EMAIL'
+];
+
+const missing = REQUIRED_VARS.filter(v => !process.env[v]);
+if (missing.length > 0) {
+  console.error('\n❌ Missing required environment variables:');
+  missing.forEach(v => console.error(`   • ${v}`));
+  console.error('\n👉 On Render: go to your service → Environment → Add the variables above.');
+  console.error('👉 Locally: copy .env.example to .env and fill in the values.\n');
+  process.exit(1);
+}
 
 const app = express();
 app.use(express.json());
@@ -19,11 +41,11 @@ app.use(cors({
 // ── SUPABASE ──
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY  // Use service role key on backend
+  process.env.SUPABASE_SERVICE_KEY
 );
 
 // ── VAPID SETUP ──
-// Run `node -e "const w=require('web-push'); const k=w.generateVAPIDKeys(); console.log(JSON.stringify(k))"` once to generate
+// Generate keys once with: npm run generate-vapid
 webpush.setVapidDetails(
   'mailto:' + process.env.CONTACT_EMAIL,
   process.env.VAPID_PUBLIC_KEY,
